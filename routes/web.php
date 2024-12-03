@@ -28,6 +28,11 @@ Route::get('/dashboard/post', function () {
     return view('post');
 })->middleware(['auth', 'verified'])->name('dashboard.post');
 
+
+Route::get('/dashboard/user', function () {
+    return view('users');
+})->middleware(['auth', 'verified'])->name('dashboard.user');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

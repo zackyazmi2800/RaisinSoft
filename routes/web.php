@@ -13,6 +13,14 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/post/postgame', function () {
+    return view('post/postgame');
+})->name('post/postgame');
+
+Route::get('/post/news', function () {
+    return view('post/news');
+})->name('post/news');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

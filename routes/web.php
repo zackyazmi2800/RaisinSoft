@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,3 +41,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Route::get('admin/users', [HomeController::class, 'index'])->name('admin.users');
+Route::get('admin/users', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
+Route::get('admin/post', [HomeController::class, 'index'])->middleware(['auth', 'admin']);

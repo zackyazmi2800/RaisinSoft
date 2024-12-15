@@ -11,25 +11,15 @@
     <!-- head -->
     <thead>
       <tr class="text-black">
-        <th>
-          <label>
-            <input type="checkbox" class="checkbox" />
-          </label>
-        </th>
         <th>Gambar</th>
         <th>Judul</th>
         <th>Deskripsi</th>
-        <th></th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <!-- row 1 -->
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" class="checkbox" />
-          </label>
-        </th>
         <td>
           <div class="flex items-center gap-3">
             <div class="avatar">

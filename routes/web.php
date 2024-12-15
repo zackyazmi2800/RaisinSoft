@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardUsersController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,17 +23,20 @@ Route::get('/post/news', function () {
     return view('post/news');
 })->name('post/news');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard/post', function () {
-    return view('post');
-})->middleware(['auth', 'verified'])->name('dashboard.post');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard/post', [HomeController::class, 'index'])->name('dashboard.post');
+    Route::resource('/dashboard/users', DashboardUsersController::class)
+        ->names([
+            'index' => 'dashboard.users',
+            'create' => 'dashboard.users.create',
+            'store' => 'dashboard.users.store',
+            'show' => 'dashboard.users.show',
+            'edit' => 'dashboard.users.edit',
+            'update' => 'dashboard.users.update',
+            'destroy' => 'dashboard.users.destroy',
+        ]);
+});
 
-
-Route::get('/dashboard/user', function () {
-    return view('users');
-})->middleware(['auth', 'verified'])->name('dashboard.user');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,7 +45,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// Route::get('admin/users', [HomeController::class, 'index'])->name('admin.users');
-Route::get('admin/users', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
-Route::get('admin/post', [HomeController::class, 'index'])->middleware(['auth', 'admin']);

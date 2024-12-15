@@ -24,14 +24,14 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
-                    <img class="w-12 h-12 mr-3" src="img/LOGO_RAISINSOFT1.png" alt="Your Company">
+                    <img class="w-12 h-12 mr-3" src="img/LOGO_RAISINSOFT3.png" alt="Your Company">
 
-                    <div class="text-xl font-semibold text-gray-100">RaisinSoft</div>
+                    <div class="text-xl font-semibold text-gray-100">RAISINSOFT</div>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
                     <!-- Navigation links -->
                     <x-nav-link href="#games" class="text-white hover:text-gray-300">Game</x-nav-link>
-                    <x-nav-link href="#featured" :active="request()->is('posts')" class="text-white hover:text-gray-300"><svg
+                    <x-nav-link href="#" :active="request()->is('posts')" class="text-white hover:text-gray-300"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -123,9 +123,18 @@
         <div x-show="isOpen" class="md:hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                 <x-nav-link href="#games"
-                    class="block text-gray-300 hover:bg-gray-700 hover:text-white">Game</x-nav-link>
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white"><svg
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg></x-nav-link>
                 <x-nav-link href="/posts" :active="request()->is('posts')"
-                    class="block text-gray-300 hover:bg-gray-700 hover:text-white">Store</x-nav-link>
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg></x-nav-link>
             </div>
             <div class="border-t border-gray-700 pb-3 pt-4">
                 <div class="flex items-center px-5">
@@ -182,27 +191,30 @@
         <div class="container mx-auto px-4">
             <h2 class="text-2xl font-extrabold tracking-widest text-gray-100 text-center mb-8">FEATURED GAMES</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <div
-                    class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4c5n0U6gOHf7L9fK1uggUMZiO5W3ITosM5sTIrk_qL4uxfyiOf5qY26WeHpSReT2mv5RDNtrdHjva56EFdnl87cMZM7pcQwnNyYSyUlDps8hCxzcQGPfUjTcMLMf5JdkafPFpFFmZcV90Ri-mGEcXx1aqfxZ1rM-Ag-rBKpG9TUNderUuSPmsAtBSlMY/s460/star-wars-jedi-survivor-pc-cover.jpg"
-                        alt="Game 1"
-                        class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                </div>
-                <div
-                    class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
+                <a href="{{ route('post/postgame') }}" rel="noopener noreferrer">
+                    <div
+                        class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4c5n0U6gOHf7L9fK1uggUMZiO5W3ITosM5sTIrk_qL4uxfyiOf5qY26WeHpSReT2mv5RDNtrdHjva56EFdnl87cMZM7pcQwnNyYSyUlDps8hCxzcQGPfUjTcMLMf5JdkafPFpFFmZcV90Ri-mGEcXx1aqfxZ1rM-Ag-rBKpG9TUNderUuSPmsAtBSlMY/s460/star-wars-jedi-survivor-pc-cover.jpg"
+                            alt="Game 1"
+                            class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
+                    </div>
+                </a>
+                
+                <div
+                    class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
+                        <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeUWFbhx4dxBRFFqrOMPGeISrcJ5oObk77h7BZa_V3sVO-Gxs0J_sKjVvq1k14dhDXyfetRgKoYMmkojUIXIl7nTQaHzPMuM-HF2nlQ63A2mfosrZi_3SHDzIJ4Vn2ykSKBb1VbwOLvq9EIOZ5FsP_3OTs?key=rrRkrSvEM0UP4sgv9HfB6A"
                             alt="Game 1"
                             class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                 </div>
                 <div
                     class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4c5n0U6gOHf7L9fK1uggUMZiO5W3ITosM5sTIrk_qL4uxfyiOf5qY26WeHpSReT2mv5RDNtrdHjva56EFdnl87cMZM7pcQwnNyYSyUlDps8hCxzcQGPfUjTcMLMf5JdkafPFpFFmZcV90Ri-mGEcXx1aqfxZ1rM-Ag-rBKpG9TUNderUuSPmsAtBSlMY/s460/star-wars-jedi-survivor-pc-cover.jpg"
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgN9BcsyMuJvpqH_DInjwGinnbhWYTsP4rcQm_hxHwep4avhA52a6v5DztmxBi4EsFfxCs7IwqqV0mcErYAABWu0w5v_HSwzhW_93hG3tdi_bH4f_cCo_fjBHEQ8iyh_m2ulzUunb0zRf4g99W-7pqTDUzOeuzSVeaSrUO18KnyYvop1KwBrINRKyhEjoY"
                             alt="Game 1"
                             class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                 </div>
                 <div
                     class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4c5n0U6gOHf7L9fK1uggUMZiO5W3ITosM5sTIrk_qL4uxfyiOf5qY26WeHpSReT2mv5RDNtrdHjva56EFdnl87cMZM7pcQwnNyYSyUlDps8hCxzcQGPfUjTcMLMf5JdkafPFpFFmZcV90Ri-mGEcXx1aqfxZ1rM-Ag-rBKpG9TUNderUuSPmsAtBSlMY/s460/star-wars-jedi-survivor-pc-cover.jpg"
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN-uE6bxEqmR9v_TByhyphenhyphen8B2gunc0LsjxXLkROfUMHoJ25CKnB-06RmfzRvJcf0m-MfSjbnR4Nb2WSnHDt38pO58v7CkauYznu72TWBJssKR-6FC2eXH8NeHowDX7Kf6_hsN_mnB77AJfNIr1R0-2DEFnhzjxmpqkA1t_93T46JV8MHV_VNxudMBBZ1Ea0/s460/dragon-ball-sparking-zero-pc-cover.jpg"
                             alt="Game 1"
                             class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                 </div>
@@ -225,19 +237,19 @@
             <h2 class="text-2xl font-extrabold tracking-widest text-black text-center mb-8">LATEST NEWS</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- News Card 1 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
                     <img src="https://www.notebookcheck.nl/fileadmin/Notebooks/News/_nc4/immortals-FSR-3-support-1.jpg"
                         alt="News 1" class="w-full h-[150px] object-cover">
                     <div class="p-4">
                         <h3 class="text-lg font-semibold text-gray-100">News Title 1</h3>
                         <p class="text-gray-400 text-sm mb-4">Brief description of the news article.</p>
-                        <a href="#"
+                        <a href="{{ route('post/news') }}"
                             class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">Read
                             More</a>
                     </div>
                 </div>
                 <!-- News Card 2 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
                     <img src="https://i.ytimg.com/vi/8vAy9Cximuo/maxresdefault.jpg" alt="News 2"
                         class="w-full h-[150px] object-cover">
                     <div class="p-4">
@@ -249,7 +261,7 @@
                     </div>
                 </div>
                 <!-- News Card 3 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
                     <img src="https://external-preview.redd.it/YZI2YZekfFatfZdx8O0lGKTRdm03viLofRViHSYsWgg.jpg?width=1080&crop=smart&auto=webp&s=c55d28249b90d2476babaaac9a777764a58fad2d"
                         alt="News 2" class="w-full h-[150px] object-cover">
                     <div class="p-4">
@@ -280,7 +292,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Card 1 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeUWFbhx4dxBRFFqrOMPGeISrcJ5oObk77h7BZa_V3sVO-Gxs0J_sKjVvq1k14dhDXyfetRgKoYMmkojUIXIl7nTQaHzPMuM-HF2nlQ63A2mfosrZi_3SHDzIJ4Vn2ykSKBb1VbwOLvq9EIOZ5FsP_3OTs?key=rrRkrSvEM0UP4sgv9HfB6A"
                             alt="Game 1"
@@ -299,7 +311,7 @@
                 </div>
                 <!-- Card 2 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://blackheartprints.com/cdn/shop/files/CallOfDutyBlackOps62024GamePosterLandscapeWeb_1200x1200.jpg?v=1717361285"
                             alt="Game 1"
@@ -318,7 +330,7 @@
                 </div>
                 <!-- Card 3 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgooIJHgBAEUPeoKc9vDs-Ycxb4x8MHfW3tveDMQsmrhStTz8GQ81DUk6VcICuH4gPJe4&usqp=CAU"
                             alt="Game 1"
@@ -337,7 +349,7 @@
                 </div>
                 <!-- Card 4 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf8W_fW_PZZNIxhE-Qny7MWF5wlJWbBxwnDQ&s "
                             alt="Game 1"
@@ -356,7 +368,7 @@
                 </div>
                 <!-- Card 5 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://asset.kompas.com/crops/R8-50iS_lS0go3o4s8IhhfwakoM=/107x0:1052x630/750x500/data/photo/2021/05/07/6094b9cbb2080.png"
                             alt="Game 1"
@@ -375,7 +387,7 @@
                 </div>
                 <!-- Card 6 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://api.duniagames.co.id/api/content/upload/file/7122254831701672058.jpg"
                             alt="Game 1"
@@ -394,7 +406,7 @@
                 </div>
                 <!-- Card 7 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0RfkEQwjfQ8LGN3eO1wOVdWlx_4Gk_tnmOa3HjVscGkqyXI7WAmPxDBBseSudJu5FU730LyOZyhM4WPrQQze_3G9PWBATPrxZB9y65x8m3rTvweLjLC-Q_zJXk7IkGUuLpIw00pb2skfIX5t6T4Gg_xldYlU7OZaT1vccb-btR76zyw9wmwJBGVsJQV8/s460/dragons-dogma-2-pc-cover.jpg"
                             alt="Game 1"
@@ -413,7 +425,7 @@
                 </div>
                 <!-- Card 8 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhS3AC7jaKnSISJENiaiPui_GVUa5RNf4VlcwEDdijNmVwPDhYeu4yBqXuiz8ZdEYkudAgPBd3Ra4LdtPB86XRsO4RpaQHMPw2jPPmOq8bet3NwjvU0hH0iB71K5qoaJJZ7x1aj6Ujrz8UQLx1pwRXTkY5ZysxPLrHdEAa3EgfAWVWPXWYHQc_j3jzpplE/s460/assassins-creed-mirage-pc-cover.jpg"
                             alt="Game 1"
@@ -432,7 +444,7 @@
                 </div>
                 <!-- Card 9 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8QJcESKeEGrd402L9Em9Qza-7INd6pivez59i1Axwp2Mbg98ZdB5m54Hb1agS7OZRMnImaxI15SssqbTm1OG_d5zUpNFyNzvDAKBMXQE0GTf2-p64iVVoxMgXwKeXeaJMh2XeG90PNImmMgV33BOlPuPYCPrlD3t__W0Mza2IZQECO8Tl7m5lfTU9Kr8/s460/god-of-war-ragnarok-pc-cover.jpg"
                             alt="Game 1"
@@ -451,7 +463,7 @@
                 </div>
                 <!-- Card 10 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN-uE6bxEqmR9v_TByhyphenhyphen8B2gunc0LsjxXLkROfUMHoJ25CKnB-06RmfzRvJcf0m-MfSjbnR4Nb2WSnHDt38pO58v7CkauYznu72TWBJssKR-6FC2eXH8NeHowDX7Kf6_hsN_mnB77AJfNIr1R0-2DEFnhzjxmpqkA1t_93T46JV8MHV_VNxudMBBZ1Ea0/s460/dragon-ball-sparking-zero-pc-cover.jpg"
                             alt="Game 1"
@@ -470,7 +482,7 @@
                 </div>
                 <!-- Card 11 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPkIOz4ju2St8yLkapxKESvPOqk-BxiTUW3bu6h2ufiWsXQOWt-yTnDHgqFHkrWUG2qQH1DqngqmJ-Bv-YQ431V7UBLLBUmtNkG6QGQwVzHDm15rY1phw7nPMggK7bwNAp73IzXDvMsX2v_swe0QFPcOrkvAsfE_hRM03hRNRBxbhfhlLHh4BNLjwLr_U/s460/stalker-2-pc-cover.jpg"
                             alt="Game 1"
@@ -489,7 +501,7 @@
                 </div>
                 <!-- Card 12 -->
                 <div
-                    class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
                         <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgN9BcsyMuJvpqH_DInjwGinnbhWYTsP4rcQm_hxHwep4avhA52a6v5DztmxBi4EsFfxCs7IwqqV0mcErYAABWu0w5v_HSwzhW_93hG3tdi_bH4f_cCo_fjBHEQ8iyh_m2ulzUunb0zRf4g99W-7pqTDUzOeuzSVeaSrUO18KnyYvop1KwBrINRKyhEjoY"
                             alt="Game 1"
@@ -514,7 +526,7 @@
     <footer class="bg-gradient-to-r bg-[#000000] text-gray-200 text-center p-6">
         <div class="container mx-auto">
             <div class="flex justify-center space-x-4 mb-4">
-                <img class="w-13 h-13" src="img/LOGO_RAISINSOFT.png" alt="Your Company">
+                <img class="w-30 h-40" src="img/LOGO_RAISINSOFT3.png" alt="Your Company">
             </div>
             <p class="text-sm mb-2">&copy; 2024 RaisinSoft. All Rights Reserved.</p>
             <p class="text-sm">Privacy Policy | Terms of Service</p>

@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard/post', [HomeController::class, 'index'])->name('dashboard.post');
-
     Route::resource('/dashboard/users', DashboardUsersController::class)
         ->names([
             'index' => 'dashboard.users',
@@ -38,7 +37,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// Route::get('admin/users', [HomeController::class, 'index'])->name('admin.users');
-// Route::get('dashboard/users', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
-// Route::get('dashboard/post', [HomeController::class, 'index'])->middleware(['auth', 'admin']);

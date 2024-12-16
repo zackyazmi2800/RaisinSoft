@@ -12,9 +12,8 @@
     <thead>
       <tr class="text-black">
         <th>Gambar</th>
-        <th>Nama</th>
-        <th>Username</th>
-        <th>Email</th>
+        <th>Judul</th>
+        <th>Deskripsi</th>
         <th>Action</th>
       </tr>
     </thead>

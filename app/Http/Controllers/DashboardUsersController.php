@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Users;
 use Illuminate\Http\Request;
 
-class DashboardPostController extends Controller
+class DashboardUsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('dashboard.users', [
+            'users' => Users::all()
+        ]);
     }
 
     /**
@@ -34,7 +36,7 @@ class DashboardPostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Users $users)
     {
         //
     }
@@ -42,7 +44,7 @@ class DashboardPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Users $users)
     {
         //
     }
@@ -50,7 +52,7 @@ class DashboardPostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Users $users)
     {
         //
     }
@@ -58,7 +60,7 @@ class DashboardPostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Users $users)
     {
         //
     }

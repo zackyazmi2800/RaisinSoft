@@ -8,7 +8,6 @@ class HomeController extends Controller
 {
     public function index() 
     {
-        return view('admin.users');
-        return view('admin.post');
+        return view('dashboard.post');
     }
 }

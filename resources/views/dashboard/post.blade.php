@@ -11,26 +11,15 @@
     <!-- head -->
     <thead>
       <tr class="text-black">
-        <th>
-          <label>
-            <input type="checkbox" class="checkbox" />
-          </label>
-        </th>
         <th>Gambar</th>
-        <th>Nama</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th></th>
+        <th>Judul</th>
+        <th>Deskripsi</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <!-- row 1 -->
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" class="checkbox" />
-          </label>
-        </th>
         <td>
           <div class="flex items-center gap-3">
             <div class="avatar">
@@ -40,15 +29,8 @@
                   alt="Avatar Tailwind CSS Component" />
               </div>
             </div>
-            <div>
-              <div class="font-bold">Hart Hagerty</div>
-              <div class="text-sm opacity-50">United States</div>
-            </div>
-          </div>
         </td>
         <td>
-          Zemlak, Daniel and Leannon
-          <br/>
         </td>
         <td>Purple</td>
         <th>

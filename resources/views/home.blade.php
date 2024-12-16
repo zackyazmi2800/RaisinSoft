@@ -28,8 +28,11 @@
 
                     <div class="text-xl font-semibold text-gray-100">RAISINSOFT</div>
                 </div>
+
+                <!-- Search Box -->
+
+                <!-- Navigation links -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <!-- Navigation links -->
                     <x-nav-link href="#games" class="text-white hover:text-gray-300">Game</x-nav-link>
                     <x-nav-link href="#" :active="request()->is('posts')" class="text-white hover:text-gray-300"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -122,19 +125,19 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <div x-show="isOpen" class="md:hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                <x-nav-link href="#games"
-                    class="block text-gray-300 hover:bg-gray-700 hover:text-white"><svg
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                </svg></x-nav-link>
+                <x-nav-link href="#games" class="block text-gray-300 hover:bg-gray-700 hover:text-white"><svg
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                    </svg></x-nav-link>
                 <x-nav-link href="/posts" :active="request()->is('posts')"
-                    class="block text-gray-300 hover:bg-gray-700 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                </svg></x-nav-link>
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white"><svg
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg></x-nav-link>
             </div>
             <div class="border-t border-gray-700 pb-3 pt-4">
                 <div class="flex items-center px-5">
@@ -199,24 +202,24 @@
                             class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                     </div>
                 </a>
-                
+
                 <div
                     class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                        <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeUWFbhx4dxBRFFqrOMPGeISrcJ5oObk77h7BZa_V3sVO-Gxs0J_sKjVvq1k14dhDXyfetRgKoYMmkojUIXIl7nTQaHzPMuM-HF2nlQ63A2mfosrZi_3SHDzIJ4Vn2ykSKBb1VbwOLvq9EIOZ5FsP_3OTs?key=rrRkrSvEM0UP4sgv9HfB6A"
-                            alt="Game 1"
-                            class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
+                    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeUWFbhx4dxBRFFqrOMPGeISrcJ5oObk77h7BZa_V3sVO-Gxs0J_sKjVvq1k14dhDXyfetRgKoYMmkojUIXIl7nTQaHzPMuM-HF2nlQ63A2mfosrZi_3SHDzIJ4Vn2ykSKBb1VbwOLvq9EIOZ5FsP_3OTs?key=rrRkrSvEM0UP4sgv9HfB6A"
+                        alt="Game 1"
+                        class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                 </div>
                 <div
                     class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgN9BcsyMuJvpqH_DInjwGinnbhWYTsP4rcQm_hxHwep4avhA52a6v5DztmxBi4EsFfxCs7IwqqV0mcErYAABWu0w5v_HSwzhW_93hG3tdi_bH4f_cCo_fjBHEQ8iyh_m2ulzUunb0zRf4g99W-7pqTDUzOeuzSVeaSrUO18KnyYvop1KwBrINRKyhEjoY"
-                            alt="Game 1"
-                            class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgN9BcsyMuJvpqH_DInjwGinnbhWYTsP4rcQm_hxHwep4avhA52a6v5DztmxBi4EsFfxCs7IwqqV0mcErYAABWu0w5v_HSwzhW_93hG3tdi_bH4f_cCo_fjBHEQ8iyh_m2ulzUunb0zRf4g99W-7pqTDUzOeuzSVeaSrUO18KnyYvop1KwBrINRKyhEjoY"
+                        alt="Game 1"
+                        class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                 </div>
                 <div
                     class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN-uE6bxEqmR9v_TByhyphenhyphen8B2gunc0LsjxXLkROfUMHoJ25CKnB-06RmfzRvJcf0m-MfSjbnR4Nb2WSnHDt38pO58v7CkauYznu72TWBJssKR-6FC2eXH8NeHowDX7Kf6_hsN_mnB77AJfNIr1R0-2DEFnhzjxmpqkA1t_93T46JV8MHV_VNxudMBBZ1Ea0/s460/dragon-ball-sparking-zero-pc-cover.jpg"
-                            alt="Game 1"
-                            class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN-uE6bxEqmR9v_TByhyphenhyphen8B2gunc0LsjxXLkROfUMHoJ25CKnB-06RmfzRvJcf0m-MfSjbnR4Nb2WSnHDt38pO58v7CkauYznu72TWBJssKR-6FC2eXH8NeHowDX7Kf6_hsN_mnB77AJfNIr1R0-2DEFnhzjxmpqkA1t_93T46JV8MHV_VNxudMBBZ1Ea0/s460/dragon-ball-sparking-zero-pc-cover.jpg"
+                        alt="Game 1"
+                        class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                 </div>
             </div>
 
@@ -563,19 +566,21 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
 
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+        const searchButton = document.getElementById('search-button');
+        const searchBox = document.getElementById('search-box');
+        const searchContainer = document.getElementById('search-container');
 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+        // Show search box when button is clicked
+        searchButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent the click event from propagating to the container
+            searchBox.classList.toggle('hidden');
+        });
 
-                // Scroll ke elemen target dengan efek halus
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
+        // Close search box when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target)) {
+                searchBox.classList.add('hidden');
+            }
         });
     </script>
 

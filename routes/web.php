@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardUsersController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', function () {
     return view('home');
@@ -37,6 +34,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
         ]);
 });
 
+Route::get('/admin/users', function () {
+    return view('admin.users');
+})->middleware(['auth', 'verified'])->name('admin.users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

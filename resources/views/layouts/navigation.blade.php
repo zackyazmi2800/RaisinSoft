@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.post')" :active="request()->routeIs('dashboard.post')">
+                    <x-nav-link :href="route('admin.post')" :active="request()->routeIs('admin.post')">
                         {{ __('Post') }}
                     </x-nav-link>
                 </div>
@@ -72,10 +72,14 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard.post')" :active="request()->routeIs('dashboard/post')">
+            <x-responsive-nav-link :href="route('admin.post')" :active="request()->routeIs('admin/post')">
                 {{ __('Post') }}
             </x-responsive-nav-link>
+<<<<<<< HEAD
             <x-responsive-nav-link :href="route('dashboard.users')" :active="request()->routeIs('dashboard/users')">
+=======
+            <x-responsive-nav-link :href="route('admin.users')" :active="request()->routeIs('admin/users')">
+>>>>>>> main
                 {{ __('User') }}
             </x-responsive-nav-link>
         </div>

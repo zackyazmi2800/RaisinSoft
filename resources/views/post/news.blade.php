@@ -49,11 +49,11 @@
                             </summary>
                             <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 bg-[#242424]">
                                 <li>
-                                    <a href="{{ route('login') }}" :active="request() - > is('posts')">Login
+                                    <a href="{{ route('login') }}" :active="request()->is('posts')">Login
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('register') }}" :active="request() - > is('posts')">Register
+                                    <a href="{{ route('register') }}" :active="request()->is('posts')">Register
                                     </a>
                                 </li>
                             </ul>

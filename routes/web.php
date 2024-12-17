@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,13 @@ Route::get('/post/news', function () {
     return view('post/news');
 })->name('post/news');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard/post', [DashboardPostController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.post');
+
+Route::get('/dashboard/user', [DashboardUsersController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.user');
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard/post', [HomeController::class, 'index'])->name('dashboard.post');
     Route::resource('/dashboard/users', DashboardUsersController::class)
@@ -34,9 +43,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         ]);
 });
 
-Route::get('/admin/users', function () {
-    return view('admin.users');
-})->middleware(['auth', 'verified'])->name('admin.users');
+Route::get('/admin/users', [DashboardUserController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

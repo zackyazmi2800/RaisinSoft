@@ -30,8 +30,26 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048', // Validasi tipe file dan ukuran maksimal 2MB
+            'title' => 'required|string|max:255',
+            'excerpt' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
+
+        $imagePath = $request->file('image')->store('images', 'public');
+
+        Post::create([
+            'image_path' => $imagePath,
+            'title' => $validated['title'],
+            'excerpt' => $validated['excerpt'],
+            'body' => $validated['body'],
+        ]);
+
+        return redirect()->route('dashboard.posts.index')->with('success', 'Post berhasil ditambahkan.');
     }
+
+
 
     /**
      * Display the specified resource.

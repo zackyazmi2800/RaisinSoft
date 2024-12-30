@@ -298,11 +298,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($posts as $post)
                 <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://www.notebookcheck.nl/fileadmin/Notebooks/News/_nc4/immortals-FSR-3-support-1.jpg"
-                        alt="News 1" class="w-full h-[150px] object-cover">
+                    <img src="{{ $post->image_path }}" alt="{{ $post->title }}" class="w-full h-[150px] object-cover">
                     <div class="p-4">
                     <h3 class="text-lg font-semibold text-gray-100">{{ $post->title }}</h3>
-                    <p class="text-gray-400 text-sm mb-4">{{ Str::limit($post->excerpt, 10) }}</p>
+                    <p class="text-gray-400 text-sm mb-4">{{ Str::limit($post->excerpt, 50) }}</p>
                         <a href="{{ route('post.show', $post->id) }}"
                             class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">Read
                             More</a>

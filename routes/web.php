@@ -57,6 +57,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
         ]);
 });
 
+Route::prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::resource('posts', DashboardPostController::class);
+});
+
+
 // Route::get('/admin/users', [DashboardUserController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.users');
 
 Route::middleware('auth')->group(function () {

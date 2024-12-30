@@ -8,7 +8,20 @@
   <div class="py-12 px-5">
     <!-- Button Tambah Post -->
     <div class="mb-4 flex justify-end">
-      <a href="{{ route('dashboard.posts.create') }}" class="btn btn-primary">+ Tambah Post</a>
+      <button class="btn btn-primary" onclick="document.getElementById('create-modal').showModal()">+ Tambah Post</button>
+      <dialog id="create-modal" class="modal">
+        <div class="modal-box bg-white">
+          <form action="{{ route('dashboard.posts.store') }}" method="POST" enctype="multipart/form-data" class="grid gap-4">
+            @csrf
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="event.preventDefault(); this.closest('dialog').close();">✕</button>
+            <input type="file" name="image" class="file-input rounded-lg file-input-bordered w-full" required />
+            <input type="text" name="title" placeholder="Judul" class="input rounded-lg input-bordered w-full" required />
+            <input type="text" name="excerpt" placeholder="Excerpt" class="input rounded-lg input-bordered w-full" required />
+            <textarea name="body" placeholder="Deskripsi" class="textarea rounded-lg textarea-bordered w-full" required></textarea>
+            <button class="btn btn-primary">Tambah</button>
+          </form>
+        </div>
+      </dialog>
     </div>
 
     <!-- Tabel Post -->

@@ -72,8 +72,29 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validated = $request->validate([
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048', // Validasi opsional untuk tipe file dan ukuran maksimal 2MB
+            'title' => 'required|string|max:255',
+            'excerpt' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $post->update(['image_path' => $imagePath]);
+        }
+    
+        $post->update([
+            'title' => $validated['title'],
+            'excerpt' => $validated['excerpt'],
+            'body' => $validated['body'],
+        ]);
+    
+        return redirect()->route('dashboard.posts.index')->with('success', 'Post berhasil diupdate.');
     }
+    
+    
+    
 
     /**
      * Remove the specified resource from storage.

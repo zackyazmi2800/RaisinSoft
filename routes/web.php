@@ -1,18 +1,20 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUsersController;
 
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [PostController::class, 'index'])->name('home');
+
+// Menampilkan detail berita berdasarkan ID
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('post.show');  // Ganti 'post' dengan 'post.show'
+
 
 Route::get('/post/postgame', function () {
     return view('post/postgame');
@@ -26,11 +28,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard/post', [DashboardPostController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.post');
+Route::get('/dashboard/post', [DashboardPostController::class, 'index'])->middleware(['auth', 'admin'])->name('dashboard.post');
+Route::get('/dashboard/user', [DashboardUsersController::class, 'index'])->middleware(['auth', 'admin'])->name('dashboard.user');
 
-Route::get('/dashboard/user', [DashboardUsersController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.user');
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard/post', [HomeController::class, 'index'])->name('dashboard.post');
     Route::resource('/dashboard/users', DashboardUsersController::class)
         ->names([
             'index' => 'dashboard.users',
@@ -43,7 +44,20 @@ Route::middleware(['auth', 'admin'])->group(function () {
         ]);
 });
 
-Route::get('/admin/users', [DashboardUserController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.users');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('/dashboard/posts', DashboardPostController::class)
+        ->names([
+            'index' => 'dashboard.posts',
+            'create' => 'dashboard.posts.create',
+            'store' => 'dashboard.posts.store',
+            'show' => 'dashboard.posts.show',
+            'edit' => 'dashboard.posts.edit',
+            'update' => 'dashboard.posts.update',
+            'destroy' => 'dashboard.posts.destroy',
+        ]);
+});
+
+// Route::get('/admin/users', [DashboardUserController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

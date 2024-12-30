@@ -290,48 +290,25 @@
     </section>
 
 
+
     <!-- Latest News Section -->
     <section id="latest-news" class="py-12 bg-[#ffffff]">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl font-extrabold tracking-widest text-black text-center mb-8">LATEST NEWS</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- News Card 1 -->
+            @foreach($posts as $post)
                 <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
                     <img src="https://www.notebookcheck.nl/fileadmin/Notebooks/News/_nc4/immortals-FSR-3-support-1.jpg"
                         alt="News 1" class="w-full h-[150px] object-cover">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">News Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Brief description of the news article.</p>
-                        <a href="{{ route('post/news') }}"
+                    <h3 class="text-lg font-semibold text-gray-100">{{ $post->title }}</h3>
+                    <p class="text-gray-400 text-sm mb-4">{{ Str::limit($post->excerpt, 10) }}</p>
+                        <a href="{{ route('post.show', $post->id) }}"
                             class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">Read
                             More</a>
                     </div>
                 </div>
-                <!-- News Card 2 -->
-                <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://i.ytimg.com/vi/8vAy9Cximuo/maxresdefault.jpg" alt="News 2"
-                        class="w-full h-[150px] object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">News Title 2</h3>
-                        <p class="text-gray-400 text-sm mb-4">Brief description of the news article.</p>
-                        <a href="#"
-                            class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">Read
-                            More</a>
-                    </div>
-                </div>
-                <!-- News Card 3 -->
-                <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://external-preview.redd.it/YZI2YZekfFatfZdx8O0lGKTRdm03viLofRViHSYsWgg.jpg?width=1080&crop=smart&auto=webp&s=c55d28249b90d2476babaaac9a777764a58fad2d"
-                        alt="News 2" class="w-full h-[150px] object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">News Title 2</h3>
-                        <p class="text-gray-400 text-sm mb-4">Brief description of the news article.</p>
-                        <a href="#"
-                            class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">Read
-                            More</a>
-                    </div>
-                </div>
-            </div>
+                @endforeach
 
             <!-- See All News Button -->
             <div class="mt-8 text-center">

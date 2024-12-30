@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
-class DashboardUserController extends Controller
+
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    // Menampilkan daftar berita
     public function index()
     {
-        return view('admin.users', [
-            'users' => Users::all()
-        ]);
+        $posts = Post::all();  // Ambil semua data post dari database
+        return view('home', compact('posts'));  // Kirim ke view home
     }
+
+    // Menampilkan detail berita berdasarkan ID
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);  // Cari post berdasarkan ID
+        return view('posts.show', compact('post'));  // Kirim ke view
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,18 +42,11 @@ class DashboardUserController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Post $post)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(string $id)
     {
         //
     }
@@ -52,7 +54,7 @@ class DashboardUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -60,7 +62,7 @@ class DashboardUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(string $id)
     {
         //
     }

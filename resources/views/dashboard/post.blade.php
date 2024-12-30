@@ -5,59 +5,70 @@
     </h2>
   </x-slot>
 
-  <div class="py-12 px-5 ">
+  <div class="py-12 px-5">
+    <!-- Button Tambah Post -->
+    <div class="mb-4 flex justify-end">
+      <a href="{{ route('dashboard.posts.create') }}" class="btn btn-primary">+ Tambah Post</a>
+    </div>
+
+    <!-- Tabel Post -->
     <div class="overflow-x-auto">
-      <table class="table text-black">
-        <!-- head -->
+      <table class="table text-black w-full border">
+        <!-- Head -->
         <thead>
-          <tr class="text-black">
+          <tr class="bg-gray-200 text-black">
             <th>Gambar</th>
-            <th>Kategori</th>
             <th>Judul</th>
+            <th>Excerpt</th>
             <th>Deskripsi</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <!-- row 1 -->
+        @foreach ($posts as $post)
+          <!-- Row -->
           <tr>
             <td>
               <div class="flex items-center gap-3">
                 <div class="avatar">
                   <div class="mask mask-squircle h-12 w-12">
-                    <img src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                      alt="Avatar Tailwind CSS Component" />
+                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" />
                   </div>
                 </div>
+              </div>
             </td>
-            <td>latestS</td>
+            <td>{{ $post->title }}</td>
+            <td>{{ Str::limit($post->excerpt, 20) }}</td>
+            <td>{{ Str::limit($post->body, 50) }}</td>
             <td>
-              Lorem, ipsum.
+              <div class="flex gap-2">
+                <!-- Edit Button -->
+                <button class="btn btn-sm btn-warning" onclick="document.getElementById('edit-modal-{{ $post->id }}').showModal()">Edit</button>
+                <dialog id="edit-modal-{{ $post->id }}" class="modal">
+                  <div class="modal-box bg-white">
+                    <form action="{{ route('dashboard.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="grid gap-4">
+                      @csrf
+                      @method('PUT')
+                      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="event.preventDefault(); this.closest('dialog').close();">✕</button>
+                      <input type="file" name="image" class="file-input rounded-lg file-input-bordered w-full" />
+                      <input type="text" name="title" value="{{ $post->title }}" placeholder="Judul" class="input rounded-lg input-bordered w-full" />
+                      <input type="text" name="excerpt" value="{{ $post->excerpt }}" placeholder="Excerpt" class="input rounded-lg input-bordered w-full" />
+                      <textarea name="body" placeholder="Deskripsi" class="textarea rounded-lg textarea-bordered w-full">{{ $post->body }}</textarea>
+                      <button class="btn btn-primary">Simpan</button>
+                    </form>
+                  </div>
+                </dialog>
+
+                <!-- Delete Button -->
+                <form action="{{ route('dashboard.posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus post ini?');">
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn btn-sm btn-danger">Hapus</button>
+                </form>
+              </div>
             </td>
-            <td>Purple</td>
-            <th>
-              <!-- You can open the modal using ID.showModal() method -->
-              <button class="btn btn-ghost" onclick="my_modal_3.showModal()">edit</button>
-              <dialog id="my_modal_3" class="modal">
-                <div class="modal-box bg-white">
-                  <form class="grid gap-2 pe-5">
-                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    <input type="file" class="file-input rounded-lg file-input-bordered w-full max-w-xs" />
-                    <input type="text" placeholder="judul" class="input rounded-lg input-bordered w-full max-w-xs" />
-                    <input type="text" placeholder="deskripsi"
-                      class="input rounded-lg input-bordered w-full max-w-xs" />
-                    <select class="select select-bordered w-full max-w-xs bg-white">
-                      <option disabled selected>kategori</option>
-                      <option>Trending</option>
-                      <option>Latest</option>
-                    </select>
-                    <button class="btn btn-primary">Simpan</button>
-                  </form>
-                </div>
-              </dialog>
-              <button class="btn btn-ghost btn-xs">delete</button>
-            </th>
           </tr>
+        @endforeach
         </tbody>
       </table>
     </div>

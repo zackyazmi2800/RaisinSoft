@@ -192,12 +192,8 @@
                     <div class="lg:max-w-lg">
                         <p class="text-base/7 font-semibold text-black">Trending</p>
                         <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                            PS5 vs Xbox Series X: Pertarungan Konsol Generasi Terbaru</h1>
-                        <p class="mt-6 text-xl/8 text-gray-700">Di era gaming modern, dua raksasa konsol, PlayStation 5
-                            (PS5) dan Xbox Series X, bersaing ketat untuk memikat hati para gamer. Kedua konsol ini
-                            membawa lompatan besar dalam teknologi, performa, dan pengalaman bermain. Berikut adalah
-                            perbandingan mendalam antara PS5 dan Xbox Series X untuk membantu Anda menentukan mana yang
-                            lebih cocok dengan kebutuhan gaming Anda.</p>
+                        {{ $post->title }}</h1>
+                        <p class="mt-6 text-xl/8 text-gray-700">{{ $post->excerpt }}</p>
                     </div>
                 </div>
             </div>
@@ -211,17 +207,7 @@
                 class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                 <div class="lg:pr-4">
                     <div class="max-w-xl text-base/7 text-gray-700 lg:max-w-lg">
-                        <p><strong class="font-semibold text-gray-900">PlayStation 5</strong>
-                        <p>PS5 dari Sony menawarkan prosesor AMD Zen 2 dan GPU RDNA 2 yang mampu menjalankan game
-                            hingga resolusi 4K dengan frame rate hingga 120 FPS. Konsol ini juga diperkuat dengan SSD
-                            ultra-cepat yang meminimalkan waktu loading secara drastis, memberikan pengalaman yang lebih
-                            mulus dalam game seperti Spider-Man: Miles Morales..</p>
-                        <p><strong class="font-semibold text-gray-900">XBOX Series X</strong>
-                        <p>Xbox Series X hadir sebagai konsol terkuat Microsoft, menawarkan spesifikasi serupa dengan
-                            PS5 namun dengan GPU sedikit lebih unggul. Xbox Series X mampu menjalankan game hingga
-                            resolusi 8K, memberikan pengalaman grafis yang luar biasa pada game seperti Forza Horizon 5.
-                            Selain itu, konsol ini memiliki penyimpanan internal yang besar dan kompatibilitas game
-                            lintas generasi.</p>
+                        <p>{{ $post->body }}</p>
                     </div>
                 </div>
             </div>

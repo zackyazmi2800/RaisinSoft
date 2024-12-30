@@ -7,7 +7,7 @@
 <!-- Menampilkan pesan sukses -->
 @if (session('success'))
     <div class="alert alert-success mb-4">
-        <span class="text-green-500 text-sm">{{ session('success') }}</span>
+        <span class="text-500 text-sm">{{ session('success') }}</span>
     </div>
 @endif
 
@@ -100,6 +100,7 @@
             <td>
               <div class="flex gap-2">
                 <!-- Edit Button -->
+                <button class="btn btn-sm btn-warning" onclick="document.getElementById('edit-modal-{{ $post->id }}').showModal()">Edit</button>
                 <dialog id="edit-modal-{{ $post->id }}" class="modal">
                   <div class="modal-box bg-white">
                       <form action="{{ route('dashboard.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="grid gap-4">

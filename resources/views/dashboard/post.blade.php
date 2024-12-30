@@ -4,24 +4,68 @@
       {{ __('Post') }}
     </h2>
   </x-slot>
+<!-- Menampilkan pesan sukses -->
+@if (session('success'))
+    <div class="alert alert-success mb-4">
+        <span class="text-green-500 text-sm">{{ session('success') }}</span>
+    </div>
+@endif
+
+<!-- Menampilkan pesan error -->
+@if ($errors->any())
+    <div class="alert alert-error mb-4">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li class="text-500 text-sm">{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
   <div class="py-12 px-5">
     <!-- Button Tambah Post -->
     <div class="mb-4 flex justify-end">
       <button class="btn btn-primary" onclick="document.getElementById('create-modal').showModal()">+ Tambah Post</button>
       <dialog id="create-modal" class="modal">
-        <div class="modal-box bg-white">
-          <form action="{{ route('dashboard.posts.store') }}" method="POST" enctype="multipart/form-data" class="grid gap-4">
+    <div class="modal-box bg-white">
+        <!-- Form Tambah Post -->
+        <form action="{{ route('dashboard.posts.store') }}" method="POST" enctype="multipart/form-data" class="grid gap-4">
             @csrf
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="event.preventDefault(); this.closest('dialog').close();">✕</button>
-            <input type="file" name="image" class="file-input rounded-lg file-input-bordered w-full" required />
-            <input type="text" name="title" placeholder="Judul" class="input rounded-lg input-bordered w-full" required />
-            <input type="text" name="excerpt" placeholder="Excerpt" class="input rounded-lg input-bordered w-full" required />
-            <textarea name="body" placeholder="Deskripsi" class="textarea rounded-lg textarea-bordered w-full" required></textarea>
+            
+            <div>
+                <input type="file" name="image" class="file-input rounded-lg file-input-bordered w-full" required />
+                @error('image')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+            
+            <div>
+                <input type="text" name="title" placeholder="Judul" class="input rounded-lg input-bordered w-full" required />
+                @error('title')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+            
+            <div>
+                <input type="text" name="excerpt" placeholder="Excerpt" class="input rounded-lg input-bordered w-full" required />
+                @error('excerpt')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+            
+            <div>
+                <textarea name="body" placeholder="Deskripsi" class="textarea rounded-lg textarea-bordered w-full" required></textarea>
+                @error('body')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+            
             <button class="btn btn-primary">Tambah</button>
-          </form>
-        </div>
-      </dialog>
+        </form>
+    </div>
+</dialog>
+
     </div>
 
     <!-- Tabel Post -->
@@ -56,21 +100,46 @@
             <td>
               <div class="flex gap-2">
                 <!-- Edit Button -->
-                <button class="btn btn-sm btn-warning" onclick="document.getElementById('edit-modal-{{ $post->id }}').showModal()">Edit</button>
                 <dialog id="edit-modal-{{ $post->id }}" class="modal">
                   <div class="modal-box bg-white">
-                    <form action="{{ route('dashboard.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="grid gap-4">
-                      @csrf
-                      @method('PUT')
-                      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="event.preventDefault(); this.closest('dialog').close();">✕</button>
-                      <input type="file" name="image" class="file-input rounded-lg file-input-bordered w-full" />
-                      <input type="text" name="title" value="{{ $post->title }}" placeholder="Judul" class="input rounded-lg input-bordered w-full" />
-                      <input type="text" name="excerpt" value="{{ $post->excerpt }}" placeholder="Excerpt" class="input rounded-lg input-bordered w-full" />
-                      <textarea name="body" placeholder="Deskripsi" class="textarea rounded-lg textarea-bordered w-full">{{ $post->body }}</textarea>
-                      <button class="btn btn-primary">Simpan</button>
-                    </form>
+                      <form action="{{ route('dashboard.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="grid gap-4">
+                          @csrf
+                          @method('PUT')
+                          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="event.preventDefault(); this.closest('dialog').close();">✕</button>
+                          
+                          <div>
+                              <input type="file" name="image" class="file-input rounded-lg file-input-bordered w-full" />
+                              @error('image')
+                              <span class="text-red-500 text-sm">{{ $message }}</span>
+                              @enderror
+                          </div>
+                          
+                          <div>
+                              <input type="text" name="title" value="{{ $post->title }}" placeholder="Judul" class="input rounded-lg input-bordered w-full" />
+                              @error('title')
+                              <span class="text-red-500 text-sm">{{ $message }}</span>
+                              @enderror
+                          </div>
+                          
+                          <div>
+                              <input type="text" name="excerpt" value="{{ $post->excerpt }}" placeholder="Excerpt" class="input rounded-lg input-bordered w-full" />
+                              @error('excerpt')
+                              <span class="text-red-500 text-sm">{{ $message }}</span>
+                              @enderror
+                          </div>
+                          
+                          <div>
+                              <textarea name="body" placeholder="Deskripsi" class="textarea rounded-lg textarea-bordered w-full">{{ $post->body }}</textarea>
+                              @error('body')
+                              <span class="text-red-500 text-sm">{{ $message }}</span>
+                              @enderror
+                          </div>
+                          
+                          <button class="btn btn-primary">Simpan</button>
+                      </form>
                   </div>
-                </dialog>
+              </dialog>
+
 
                 <!-- Delete Button -->
                 <form action="{{ route('dashboard.posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus post ini?');">

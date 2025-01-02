@@ -8,12 +8,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUsersController;
+use App\Http\Controllers\GameController;
 
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
+
 // Menampilkan detail berita berdasarkan ID
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('post.show');  // Ganti 'post' dengan 'post.show'
+Route::get('/postgame/{id}', [PostController::class, 'postGame'])->name('post.postgame');
+
 
 
 Route::get('/post/postgame', function () {
@@ -60,9 +64,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::resource('posts', DashboardPostController::class);
 });
-
-
-// Route::get('/admin/users', [DashboardUserController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

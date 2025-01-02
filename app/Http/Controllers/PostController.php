@@ -2,68 +2,63 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
-
+use App\Services\RawgService;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    // Menampilkan daftar berita
+    protected $rawgService;
+
+    public function __construct(RawgService $rawgService)
+    {
+        $this->rawgService = $rawgService;
+    }
+
     public function index()
     {
-        $posts = Post::all();  // Ambil semua data post dari database
-        return view('home', compact('posts'));  // Kirim ke view home
+        $posts = Post::all();
+        $games = $this->rawgService->getGames(['page' => 1, 'page_size' => 8]);
+        $allGames = $this->rawgService->getGames(['page' => 1, 'page_size' => 40]);
+
+        if (isset($games['error'])) {
+            return response()->json([
+                'error' => $games['error'],
+                'message' => $games['message'],
+            ], $games['error']);
+        }
+
+        return view('home', compact('posts', 'games', 'allGames'));
     }
 
-    // Menampilkan detail berita berdasarkan ID
+    // Method to show detailed game information based on game ID
+    public function postGame($id)
+    {
+        // Fetch detailed game info by ID
+        $game = $this->rawgService->getGameById($id);
+
+        if (isset($game['error'])) {
+            return response()->json([
+                'error' => $game['error'],
+                'message' => $game['message'],
+            ], $game['error']);
+        }
+
+        // Pass game details to the view
+        return view('posts.postgame', compact('game'));
+    }
+
+
+
+
+    /**
+     * Show the specified post.
+     */
     public function show($id)
     {
-        $post = Post::findOrFail($id);  // Cari post berdasarkan ID
-        return view('posts.show', compact('post'));  // Kirim ke view
+        $post = Post::findOrFail($id); // Cari post berdasarkan ID
+        return view('posts.show', compact('post')); // Kirim ke view
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    // Metode lain (create, store, edit, update, destroy) tetap ada jika diperlukan
 }

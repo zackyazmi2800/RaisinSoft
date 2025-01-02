@@ -33,7 +33,7 @@
               </div>
             </div>
         </td>
-        <td>Admin</td>
+        <td>{{ $user->user_type }}</td>
         <td>
         {{ $user->name }}
         </td>

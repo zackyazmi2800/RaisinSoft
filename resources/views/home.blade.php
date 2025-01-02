@@ -106,11 +106,11 @@
                             </summary>
                             <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 bg-[#242424]">
                                 <li>
-                                    <a href="{{ route('login') }}" :active="request()->is('posts')">Login
+                                    <a href="{{ route('login') }}" :active="request() - > is('posts')">Login
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('register') }}" :active="request()->is('posts')">Register
+                                    <a href="{{ route('register') }}" :active="request() - > is('posts')">Register
                                     </a>
                                 </li>
                             </ul>
@@ -134,11 +134,9 @@
                             @endauth
                         </div>
                         <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
-                            x-transition:enter-start="opacity-0 scale-95"
-                            x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-75 transform"
-                            x-transition:leave-start="opacity-100 scale-100"
-                            x-transition:leave-end="opacity-0 scale-95"
+                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
                             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                             tabindex="-1">
@@ -295,54 +293,34 @@
         <div class="container mx-auto px-4">
             <h2 class="text-2xl font-extrabold tracking-widest text-black text-center mb-8">LATEST NEWS</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- News Card 1 -->
-                <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://www.notebookcheck.nl/fileadmin/Notebooks/News/_nc4/immortals-FSR-3-support-1.jpg"
-                        alt="News 1" class="w-full h-[150px] object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">News Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Brief description of the news article.</p>
-                        <a href="{{ route('post/news') }}"
-                            class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">Read
-                            More</a>
+                @foreach ($posts as $post)
+                    <div
+                        class="group bg-[#242424] rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                        <div class="overflow-hidden">
+                            <img src="{{ $post->image_path }}" alt="{{ $post->title }}"
+                                class="w-full h-[150px] object-cover transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-100">{{ $post->title }}</h3>
+                            <p class="text-gray-400 text-sm mb-4">{{ Str::limit($post->excerpt, 50) }}</p>
+                            <a href="{{ route('post.show', $post->id) }}"
+                                class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">
+                                Read More
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <!-- News Card 2 -->
-                <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://i.ytimg.com/vi/8vAy9Cximuo/maxresdefault.jpg" alt="News 2"
-                        class="w-full h-[150px] object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">News Title 2</h3>
-                        <p class="text-gray-400 text-sm mb-4">Brief description of the news article.</p>
-                        <a href="#"
-                            class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">Read
-                            More</a>
-                    </div>
-                </div>
-                <!-- News Card 3 -->
-                <div class="bg-[#242424] rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://external-preview.redd.it/YZI2YZekfFatfZdx8O0lGKTRdm03viLofRViHSYsWgg.jpg?width=1080&crop=smart&auto=webp&s=c55d28249b90d2476babaaac9a777764a58fad2d"
-                        alt="News 2" class="w-full h-[150px] object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">News Title 2</h3>
-                        <p class="text-gray-400 text-sm mb-4">Brief description of the news article.</p>
-                        <a href="#"
-                            class="btn text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">Read
-                            More</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
-
             <!-- See All News Button -->
-            <div class="mt-8 text-center">
-                <a href="#"
+            <div class="mt-8 flex justify-center">
+                <a href=""
                     class="inline-block text-lg font-semibold text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">
                     SEE ALL NEWS
                 </a>
             </div>
         </div>
-        </div>
     </section>
+
 
     <!-- Cards Section -->
     <section id="games" class="bg-[#242424] py-12">

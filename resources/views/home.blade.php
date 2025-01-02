@@ -243,49 +243,43 @@
     </section>
 
 
-    <!-- Featured Games Section -->
-    <section id="featured" class="bg-[#1c1b19] py-12">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-extrabold tracking-widest text-gray-100 text-center mb-8">FEATURED GAMES</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <a href="{{ route('post/postgame') }}" rel="noopener noreferrer">
-                    <div
-                        class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4c5n0U6gOHf7L9fK1uggUMZiO5W3ITosM5sTIrk_qL4uxfyiOf5qY26WeHpSReT2mv5RDNtrdHjva56EFdnl87cMZM7pcQwnNyYSyUlDps8hCxzcQGPfUjTcMLMf5JdkafPFpFFmZcV90Ri-mGEcXx1aqfxZ1rM-Ag-rBKpG9TUNderUuSPmsAtBSlMY/s460/star-wars-jedi-survivor-pc-cover.jpg"
-                            alt="Game 1"
-                            class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
+<!-- Featured Games Section -->
+<section id="featured" class="bg-[#1c1b19] py-12">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-extrabold tracking-widest text-gray-100 text-center mb-8">FEATURED GAMES</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            @foreach ($games['results'] as $game)
+            <a href="{{ route('post.postgame', ['id' => $game['id']]) }}">
+                <div class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+                    <div class="w-full h-[200px] overflow-hidden">
+                        <img src="{{ $game['background_image'] }}"
+                             alt="{{ $game['name'] }}"
+                             class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                     </div>
-                </a>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-100">{{ $game['name'] }}</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                        </svg>
 
-                <div
-                    class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeUWFbhx4dxBRFFqrOMPGeISrcJ5oObk77h7BZa_V3sVO-Gxs0J_sKjVvq1k14dhDXyfetRgKoYMmkojUIXIl7nTQaHzPMuM-HF2nlQ63A2mfosrZi_3SHDzIJ4Vn2ykSKBb1VbwOLvq9EIOZ5FsP_3OTs?key=rrRkrSvEM0UP4sgv9HfB6A"
-                        alt="Game 1"
-                        class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
+                        <p class="text-gray-400 text-sm mb-4">{{ $game['rating'] }}</p> 
+                           
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </div>
-                <div
-                    class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgN9BcsyMuJvpqH_DInjwGinnbhWYTsP4rcQm_hxHwep4avhA52a6v5DztmxBi4EsFfxCs7IwqqV0mcErYAABWu0w5v_HSwzhW_93hG3tdi_bH4f_cCo_fjBHEQ8iyh_m2ulzUunb0zRf4g99W-7pqTDUzOeuzSVeaSrUO18KnyYvop1KwBrINRKyhEjoY"
-                        alt="Game 1"
-                        class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                </div>
-                <div
-                    class="bg-gray-800 rounded-md overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group h-[200px]">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN-uE6bxEqmR9v_TByhyphenhyphen8B2gunc0LsjxXLkROfUMHoJ25CKnB-06RmfzRvJcf0m-MfSjbnR4Nb2WSnHDt38pO58v7CkauYznu72TWBJssKR-6FC2eXH8NeHowDX7Kf6_hsN_mnB77AJfNIr1R0-2DEFnhzjxmpqkA1t_93T46JV8MHV_VNxudMBBZ1Ea0/s460/dragon-ball-sparking-zero-pc-cover.jpg"
-                        alt="Game 1"
-                        class="w-full h-full object-center transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                </div>
-            </div>
-
-            <!-- See All Games Button -->
-            <div class="mt-8 text-center">
-                <a href="#"
-                    class="inline-block text-lg font-semibold text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">
-                    SEE ALL GAMES
-                </a>
-            </div>
+            </a>
+            @endforeach    
         </div>
-    </section>
+
+        <!-- See All Games Button -->
+        <div class="mt-8 text-center">
+            <a href="#allGames"
+               class="inline-block text-lg font-semibold text-gray-900 bg-gradient-to-r from-yellow-500 to-red-500 py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl hover:bg-gradient-to-l duration-300">
+                SEE ALL GAMES
+            </a>
+        </div>
+    </div>
+</section>
 
 
     <!-- Latest News Section -->
@@ -310,7 +304,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+        </div>
             <!-- See All News Button -->
             <div class="mt-8 flex justify-center">
                 <a href=""
@@ -323,238 +317,31 @@
 
 
     <!-- Cards Section -->
-    <section id="games" class="bg-[#242424] py-12">
+    <section id="allGames" class="bg-[#242424] py-12">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl font-bold text-gray-100 text-center mb-8">OUR GAMES</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
+            @foreach ($allGames['results'] as $game)
+            <a href="{{ route('post.postgame', ['id' => $game['id']]) }}">
+                <div class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
                     <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeUWFbhx4dxBRFFqrOMPGeISrcJ5oObk77h7BZa_V3sVO-Gxs0J_sKjVvq1k14dhDXyfetRgKoYMmkojUIXIl7nTQaHzPMuM-HF2nlQ63A2mfosrZi_3SHDzIJ4Vn2ykSKBb1VbwOLvq9EIOZ5FsP_3OTs?key=rrRkrSvEM0UP4sgv9HfB6A"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
+                        <img src="{{ $game['background_image'] }}"
+                             alt="{{ $game['name'] }}"
+                             class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
                     </div>
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r  from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
+                        <h3 class="text-lg font-semibold text-gray-100">{{ $game['name'] }}</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                        </svg>
+
+                        <p class="text-gray-400 text-sm mb-4">{{ $game['rating'] }}</p>
+                           
                     </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </div>
-                <!-- Card 2 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://blackheartprints.com/cdn/shop/files/CallOfDutyBlackOps62024GamePosterLandscapeWeb_1200x1200.jpg?v=1717361285"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgooIJHgBAEUPeoKc9vDs-Ycxb4x8MHfW3tveDMQsmrhStTz8GQ81DUk6VcICuH4gPJe4&usqp=CAU"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 4 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf8W_fW_PZZNIxhE-Qny7MWF5wlJWbBxwnDQ&s "
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 5 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://asset.kompas.com/crops/R8-50iS_lS0go3o4s8IhhfwakoM=/107x0:1052x630/750x500/data/photo/2021/05/07/6094b9cbb2080.png"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 6 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://api.duniagames.co.id/api/content/upload/file/7122254831701672058.jpg"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 7 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0RfkEQwjfQ8LGN3eO1wOVdWlx_4Gk_tnmOa3HjVscGkqyXI7WAmPxDBBseSudJu5FU730LyOZyhM4WPrQQze_3G9PWBATPrxZB9y65x8m3rTvweLjLC-Q_zJXk7IkGUuLpIw00pb2skfIX5t6T4Gg_xldYlU7OZaT1vccb-btR76zyw9wmwJBGVsJQV8/s460/dragons-dogma-2-pc-cover.jpg"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 8 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhS3AC7jaKnSISJENiaiPui_GVUa5RNf4VlcwEDdijNmVwPDhYeu4yBqXuiz8ZdEYkudAgPBd3Ra4LdtPB86XRsO4RpaQHMPw2jPPmOq8bet3NwjvU0hH0iB71K5qoaJJZ7x1aj6Ujrz8UQLx1pwRXTkY5ZysxPLrHdEAa3EgfAWVWPXWYHQc_j3jzpplE/s460/assassins-creed-mirage-pc-cover.jpg"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 9 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8QJcESKeEGrd402L9Em9Qza-7INd6pivez59i1Axwp2Mbg98ZdB5m54Hb1agS7OZRMnImaxI15SssqbTm1OG_d5zUpNFyNzvDAKBMXQE0GTf2-p64iVVoxMgXwKeXeaJMh2XeG90PNImmMgV33BOlPuPYCPrlD3t__W0Mza2IZQECO8Tl7m5lfTU9Kr8/s460/god-of-war-ragnarok-pc-cover.jpg"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 10 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN-uE6bxEqmR9v_TByhyphenhyphen8B2gunc0LsjxXLkROfUMHoJ25CKnB-06RmfzRvJcf0m-MfSjbnR4Nb2WSnHDt38pO58v7CkauYznu72TWBJssKR-6FC2eXH8NeHowDX7Kf6_hsN_mnB77AJfNIr1R0-2DEFnhzjxmpqkA1t_93T46JV8MHV_VNxudMBBZ1Ea0/s460/dragon-ball-sparking-zero-pc-cover.jpg"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 11 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPkIOz4ju2St8yLkapxKESvPOqk-BxiTUW3bu6h2ufiWsXQOWt-yTnDHgqFHkrWUG2qQH1DqngqmJ-Bv-YQ431V7UBLLBUmtNkG6QGQwVzHDm15rY1phw7nPMggK7bwNAp73IzXDvMsX2v_swe0QFPcOrkvAsfE_hRM03hRNRBxbhfhlLHh4BNLjwLr_U/s460/stalker-2-pc-cover.jpg"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
-                <!-- Card 12 -->
-                <div
-                    class="bg-[#2c2b28] rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 relative group">
-                    <div class="w-full h-[200px] overflow-hidden">
-                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgN9BcsyMuJvpqH_DInjwGinnbhWYTsP4rcQm_hxHwep4avhA52a6v5DztmxBi4EsFfxCs7IwqqV0mcErYAABWu0w5v_HSwzhW_93hG3tdi_bH4f_cCo_fjBHEQ8iyh_m2ulzUunb0zRf4g99W-7pqTDUzOeuzSVeaSrUO18KnyYvop1KwBrINRKyhEjoY"
-                            alt="Game 1"
-                            class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-1">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Game Title 1</h3>
-                        <p class="text-gray-400 text-sm mb-4">Description of the game.</p>
-                        <a href="#"
-                            class="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white py-2 px-4 rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-gradient-to-l mt-2">Read
-                            More</a>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300">
-                    </div>
-                </div>
+            </a>
+            @endforeach    
             </div>
         </div>
     </section>
